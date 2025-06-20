@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>weatherApp</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* Optional: fallback background color */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: url('360_F_90765953_xgLAsm6N7VZD1zMlO9CA8t7qwBpZ4lSr.jpg') no-repeat center center/cover;
+        z-index: -2;
+      }
+      /* Optional: overlay for better contrast */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(255,255,255,0.2);
+        z-index: -1;
+      }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+    <div class="bg-white/70 rounded-3xl shadow-2xl p-8 w-full max-w-md flex flex-col items-center space-y-6 backdrop-blur-md">
+        <!-- Weather Icons -->
+        <div class="flex justify-center space-x-4 mb-2">
+            <img id="icon-sun" src="icons8-sun-100.png" alt="Sun" class="w-10 h-10 opacity-80" />
+            <img id="icon-cloud" src="icons8-clouds-100.png" alt="Cloud" class="w-10 h-10 opacity-80" />
+            <img id="icon-rain" src="icons8-heavy-rain-100.png" alt="Rain" class="w-10 h-10 opacity-80" />
+            <img id="icon-snow" src="icons8-snow-100.png" alt="Snow" class="w-10 h-10 opacity-80" />
+        </div>
+        <!-- Inputs -->
+        <div class="w-full flex flex-col space-y-4">
+            <input id="long" type="text" placeholder="Longitude"
+                class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition shadow-sm bg-white/80" />
+            <input id="lang" type="text" placeholder="Latitude"
+                class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition shadow-sm bg-white/80" />
+            <button onclick="clicked()"
+                class="mt-2 px-6 py-2 rounded-lg bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition hover:scale-105">
+                Submit
+            </button>
+        </div>
+        <!-- Output -->
+        <div class="w-full text-center mt-4">
+            <h1 id="name" class="text-2xl font-semibold text-gray-800">Country : </h1>
+            <h2 id="temp" class="text-xl text-gray-700">Temperature : </h2>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
