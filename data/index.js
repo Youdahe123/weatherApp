@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     const lat = req.query.lat || 0.00
     axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`)
         .then(response => {
-            res.json({name : response.data.sys['country'], temp : response.data.main['temp']})
+            res.json({name : response.data.sys['country'], temp : response.data.main['temp'], weather : response.data.weather[0]['main']})
         })
         .catch(err => {
             console.log(err);

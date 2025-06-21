@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <title>weatherApp</title>
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS  -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="s">
     <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
     <style>
       body {
         font-family: 'Inter', sans-serif;
       }
-      /* Optional: fallback background color */
       body::before {
         content: "";
         position: fixed;
@@ -19,7 +17,6 @@
         background: url('360_F_90765953_xgLAsm6N7VZD1zMlO9CA8t7qwBpZ4lSr.jpg') no-repeat center center/cover;
         z-index: -2;
       }
-      /* Optional: overlay for better contrast */
       body::after {
         content: "";
         position: fixed;
@@ -27,16 +24,41 @@
         background: rgba(255,255,255,0.2);
         z-index: -1;
       }
+      .afterClick {
+        display: none;
+      }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center">
-    <div class="bg-white/70 rounded-3xl shadow-2xl p-8 w-full max-w-md flex flex-col items-center space-y-6 backdrop-blur-md">
+    <!-- Popup Welcome Overlay -->
+    <div class="beforeClick fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+        <div class="beforeClick bg-white/90 rounded-3xl shadow-2xl p-10 w-full max-w-md flex flex-col items-center space-y-8 backdrop-blur-md">
+            <!-- Weather Icons (all visible) -->
+            <div class="beforeClick flex justify-center space-x-6 mb-4">
+                <img id="icon-sun" src="icons8-sun-100.png" alt="Sun" class="beforeClick w-14 h-14 opacity-90" style="display: block;" />
+                <img id="icon-cloud" src="icons8-clouds-100.png" alt="Cloud" class="beforeClick w-14 h-14 opacity-90" style="display: block;" />
+                <img id="icon-rain" src="icons8-heavy-rain-100.png" alt="Rain" class="beforeClick w-14 h-14 opacity-90" style="display: block;" />
+                <img id="icon-snow" src="icons8-snow-100.png" alt="Snow" class="beforeClick w-14 h-14 opacity-90" style="display: block;" />
+            </div>
+            <!-- Welcome Message -->
+            <div class="beforeClick text-center">
+                <h1 class="beforeClick text-3xl font-bold text-gray-800 mb-2">Welcome to WeatherApp</h1>
+                <p class="beforeClick text-lg text-gray-600">Check the current weather in your area.</p>
+            </div>
+            <!-- Check Weather Button -->
+            <button onclick="changed()" class="beforeClick mt-4 px-8 py-3 rounded-lg bg-blue-600 text-white text-lg font-semibold shadow-lg hover:bg-blue-700 transition hover:scale-105 focus:outline-none">
+                Check Weather
+            </button>
+        </div>
+    </div>
+    <!-- Main Weather App UI (hidden at first, shown after "Check Weather") -->
+    <div id="mainApp" class="afterClick bg-white/90 rounded-3xl shadow-2xl p-10 w-full max-w-md flex flex-col items-center space-y-6 backdrop-blur-md">
         <!-- Weather Icons -->
         <div class="flex justify-center space-x-4 mb-2">
-            <img id="icon-sun" src="icons8-sun-100.png" alt="Sun" class="w-10 h-10 opacity-80" />
-            <img id="icon-cloud" src="icons8-clouds-100.png" alt="Cloud" class="w-10 h-10 opacity-80" />
-            <img id="icon-rain" src="icons8-heavy-rain-100.png" alt="Rain" class="w-10 h-10 opacity-80" />
-            <img id="icon-snow" src="icons8-snow-100.png" alt="Snow" class="w-10 h-10 opacity-80" />
+            <img class="w-10 h-10 opacity-80" style="display: none;" id="icon-sun2" src="icons8-sun-100.png" alt="Sun" />
+            <img class="w-10 h-10 opacity-80" style="display: none;" id="icon-cloud2" src="icons8-clouds-100.png" alt="Cloud" />
+            <img class="w-10 h-10 opacity-80" style="display: none;" id="icon-rain2" src="icons8-heavy-rain-100.png" alt="Rain" />
+            <img class="w-10 h-10 opacity-80" style="display: none;" id="icon-snow2" src="icons8-snow-100.png" alt="Snow" />
         </div>
         <!-- Inputs -->
         <div class="w-full flex flex-col space-y-4">
