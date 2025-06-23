@@ -17,7 +17,7 @@ A simple and visually modern weather web app that allows users to enter **longit
 ## 🧰 Tech Stack
 
 - **Frontend**: HTML, JavaScript, TailwindCSS  
-- **Backend**: Node.js, Express.js  
+- **Backend**: Node.js, Express.js,MongoDB 
 - **API**: OpenWeatherMap (https://openweathermap.org)  
 - **Other Tools**: dotenv for environment variable management
 
