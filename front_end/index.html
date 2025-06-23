@@ -53,6 +53,7 @@
     </div>
     <!-- Main Weather App UI (hidden at first, shown after "Check Weather") -->
     <div id="mainApp" class="afterClick bg-white/90 rounded-3xl shadow-2xl p-10 w-full max-w-md flex flex-col items-center space-y-6 backdrop-blur-md">
+        
         <!-- Weather Icons -->
         <div class="flex justify-center space-x-4 mb-2">
             <img class="w-10 h-10 opacity-80" style="display: none;" id="icon-sun2" src="icons8-sun-100.png" alt="Sun" />
@@ -69,6 +70,10 @@
             <button onclick="clicked()"
                 class="mt-2 px-6 py-2 rounded-lg bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition hover:scale-105">
                 Submit
+            </button>
+             <button onclick="checkRecent()"
+                class=" text-xs mt-2 px-1 py-2 rounded-lg bg-blue-500 text-white font-semibold shadow hover:bg-blue-600 transition hover:scale-105">
+                Check Recent Searches
             </button>
         </div>
         <!-- Output -->

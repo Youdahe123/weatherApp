@@ -33,8 +33,24 @@ function clicked(){
             sun2.style.display = 'block'
         }
         if(data.weather == 'Clouds'){
-            cloud2.style.display ='block'
-        }
+            cloud2.style.display ='block'}
+        
+        fetch('http://localhost:3000/saveWeather', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+    country: data.name,
+    lat: parseFloat(lat),
+    lon: parseFloat(lon),
+    temperature: data.temp,
+    weatherCondition: data.weather,
+    searchedAt: new Date()
+  })
+})
+.then(res => res.json())
+.then(saveRes => console.log(`Saved to DB : ${saveRes}`))
+.catch(err => console.log(`Error: ${err}`))
+        
     })
     .catch(err => console.log(err))
 }
@@ -53,4 +69,10 @@ function changed(){
     rain.style.display = 'none';
     snow.style.display = 'none';
     image.style.display = 'none';
+}
+function checkRecent(){
+    fetch('http://localhost:3000/saveWeather')
+    .then(res => res.json())
+    .then(data => console.log(data))
+        
 }
